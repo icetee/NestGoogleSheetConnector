@@ -44,6 +44,15 @@ export class GoogleSheetConnectorService{
         return res.data;
     }
 
+    async clearRange(spreadsheetId: string, range: string): Promise<any> {
+        const sheets = this.getGoogleSheetConnect()
+
+        return await sheets.spreadsheets.values.clear({
+            spreadsheetId: spreadsheetId,
+            range,
+        });
+    }
+
     /**
      * Read a range of cells from a spreadsheet
      *
