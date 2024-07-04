@@ -25,10 +25,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
+          always-auth: true
           node-version: 16
           registry-url: https://registry.npmjs.org/
+          scope: '@icetee'
       - run: |
-          echo "$(jq '.name = "@icetee/NestGoogleSheetConnector"' package.json)" > package.json
+          echo "$(jq '.name = "@icetee/nest-google-sheet-connector"' package.json)" > package.json
       - run: npm ci
       - run: npm publish --provenance --access public
         env:
